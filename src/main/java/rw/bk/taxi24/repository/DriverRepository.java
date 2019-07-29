@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import rw.bk.taxi24.models.Driver;
 
 @Repository
-public interface DriverRepository  extends JpaRepository<Driver,Integer> {
+public interface DriverRepository  extends JpaRepository<Driver,Long> {
 }

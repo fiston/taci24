@@ -16,20 +16,16 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 @Entity
-public class Driver {
+public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String names;
-    private String carPlate;
-    private String drivingLicenseNumber;
-    private double locLong;
-    private double locLat;
-
+    private Trip trip;
+    private  boolean paid;
 
     @CreationTimestamp
     private Date createdAt;
-
     @UpdateTimestamp
     private Date updatedAt;
+
 }

@@ -19,13 +19,14 @@ import java.util.Date;
 public class Rider {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String names;
     private String phoneNumber;
-    private String location;
+    private double locLong;
+    private double locLat;
+
     @CreationTimestamp
     private Date createdAt;
-
     @UpdateTimestamp
     private Date updatedAt;
 

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import rw.bk.taxi24.models.DriverShift;
 
 @Repository
-public interface DriverShiftRepository  extends JpaRepository<DriverShift,Integer> {
+public interface DriverShiftRepository  extends JpaRepository<DriverShift,Long> {
 }

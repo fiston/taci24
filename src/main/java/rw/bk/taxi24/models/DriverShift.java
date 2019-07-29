@@ -24,10 +24,8 @@ public class DriverShift {
     private Date shiftDate;
     private String startTime;
     private String endTime;
-
     @CreationTimestamp
     private Date createdAt;
-
     @UpdateTimestamp
     private Date updatedAt;
 }

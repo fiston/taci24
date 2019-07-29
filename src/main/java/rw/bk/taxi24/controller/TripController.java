@@ -2,7 +2,9 @@ package rw.bk.taxi24.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rw.bk.taxi24.models.Invoice;
 import rw.bk.taxi24.models.Trip;
+import rw.bk.taxi24.repository.InvoiceRepository;
 import rw.bk.taxi24.repository.TripRepository;
 
 import java.util.List;
@@ -12,10 +14,13 @@ import java.util.List;
 public class TripController {
 
     private TripRepository repository;
+    private InvoiceRepository invoiceRepository;
 
-    TripController(TripRepository tripRepository){
+    TripController(TripRepository tripRepository, InvoiceRepository invoiceRepository){
         this.repository=tripRepository;
+        this.invoiceRepository=invoiceRepository;
     }
+
     @GetMapping
     public List findAll(){
         return repository.findAll();
@@ -31,14 +36,18 @@ public class TripController {
     public Trip create(@RequestBody Trip trip){
         return repository.save(trip);
     }
+
     @PutMapping(value="/{id}")
-    public ResponseEntity<Trip> updateStatus(@PathVariable("id") long id,
+    public ResponseEntity<Invoice> completeTrip(@PathVariable("id") long id,
                                           @RequestBody Trip trip){
         return repository.findById(id)
                 .map(record -> {
                     record.setActive(trip.isActive());
                     Trip updated = repository.save(record);
-                    return ResponseEntity.ok().body(updated);
+                    Invoice invoice=new Invoice();
+                    invoice.setTrip(updated);
+                    invoiceRepository.save(invoice);
+                    return ResponseEntity.ok().body(invoice);
                 }).orElse(ResponseEntity.notFound().build());
     }
 
