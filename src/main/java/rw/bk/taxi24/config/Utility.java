@@ -1,4 +1,4 @@
-package rw.bk.taxi24;
+package rw.bk.taxi24.config;
 
 public  class Utility {
 

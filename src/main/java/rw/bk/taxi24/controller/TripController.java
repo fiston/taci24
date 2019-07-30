@@ -25,6 +25,7 @@ public class TripController {
     public List findAll(){
         return repository.findAll();
     }
+
     @GetMapping(path = {"/{id}"})
     public ResponseEntity<Trip> findById(@PathVariable long id){
         return repository.findById(id)
