@@ -1,6 +1,6 @@
 package rw.bk.taxi24.controller;
 
-import io.swagger.annotations.Api;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rw.bk.taxi24.models.DriverShift;
@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping({"/driver-shift"})
-@Api(value="Employee Management System", description="Operations pertaining to employee in Employee Management System")
 public class DriverShiftController {
     private DriverShiftRepository repository;
 
